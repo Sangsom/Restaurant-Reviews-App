@@ -83,7 +83,8 @@ window.initMap = () => {
 
   updateRestaurants();
 
-  console.log(document.getElementById('map'));
+  // Remove tabindex from map markers
+  document.querySelector('.gm-style').setAttribute('tabindex', "-1");
 }
 
 /**

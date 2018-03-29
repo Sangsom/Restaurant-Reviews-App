@@ -261,6 +261,10 @@ nav h1 a {
   width: 100%;
 }
 
+#restaurants-list li a:focus {
+  border: 1px solid black;
+}
+
 /* ====================== Restaurant Details ====================== */
 
 .inside header {

@@ -81,10 +81,17 @@ window.initMap = () => {
     scrollwheel: false
   });
 
-  updateRestaurants();
+  let listener = self.map.addListener("tilesloaded", () => {
+    document
+      .querySelectorAll("map a")
+      .forEach(t => t.setAttribute("tabindex", -1));
+    document
+      .querySelectorAll("map div")
+      .forEach(t => t.setAttribute("tabindex", -1));
+    google.maps.event.removeListener(listener);
+  });
 
-  // Remove tabindex from map markers
-  document.querySelector('.gm-style').setAttribute('tabindex', "-1");
+  updateRestaurants();
 }
 
 /**
@@ -163,7 +170,7 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
-  more.setAttribute("tabindex", "0");
+  more.setAttribute('aria-label', restaurant.name);
   li.append(more)
 
   return li

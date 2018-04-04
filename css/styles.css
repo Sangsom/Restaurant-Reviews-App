@@ -402,4 +402,7 @@ nav h1 a {
   #reviews-list li {
     width: 100%;
   }
+  #breadcrumb {
+    width: 100%;
+  }
 }
